@@ -55,6 +55,7 @@ class CharDistClassifier(Classifier):
             sum(char.isspace() for char in val) / len(val))
         feat_df['space_num'] = feat_df['value'].apply(
             lambda val: sum(char.isspace() for char in val))
+        #self.features = feat_df.ix[:, 1:].as_matrix()
         self.features = feat_df.iloc[:, 1:].values
         # training the classifier
         self.clf.fit(self.features, self.labels)
@@ -118,5 +119,6 @@ class CharDistClassifier(Classifier):
             sum(char.isspace() for char in val) / len(val))
         feat_df['space_num'] = feat_df['value'].apply(
             lambda val: sum(char.isspace() for char in val))
+        #self.features = feat_df.ix[:, 1:].as_matrix()
         features = feat_df.iloc[:, 1:].values
         return self.clf.predict_proba(features)
